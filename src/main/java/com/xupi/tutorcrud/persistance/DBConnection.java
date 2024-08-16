@@ -1,4 +1,4 @@
-
+ 
 package com.xupi.tutorcrud.persistance;
 
 import java.sql.Connection;
@@ -17,7 +17,7 @@ public class DBConnection {
     
     private DBConnection(){
         this.user = "root";
-        this.password = "12345";
+        this.password = "";
         this.dataBase = "comarcas_xupi";
         this.server = "localhost";
         this.port = "3306";
