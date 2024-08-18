@@ -9,11 +9,11 @@ package com.xupi.tutorcrud.persistance;
  * @author erick
  */
 public class TutorDTO {
-    private int id;
-    private String name;
-    private String phone;
-    private boolean isDirector;
-    private int houseId;
+    protected int id;
+    protected String name;
+    protected String phone;
+    protected boolean isDirector;
+    protected int houseId;
 
     public TutorDTO(int id, String name, String phone, boolean isDirector, int houseId) {
         this.id = id;
