@@ -1,5 +1,9 @@
 import com.xupi.tutorcrud.logic.TutorLogic;
 import com.xupi.tutorcrud.persistance.DBConnection;
+import com.xupi.tutorcrud.persistance.TutorDAO;
+import com.xupi.tutorcrud.persistance.TutorDTO;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 /**
  *
@@ -30,6 +34,7 @@ public class main {
                         break;
                 }
         }while(option != 0);
+        System.out.println("Fin del programa");
     }
     
     public void createTutorForm(){
@@ -42,18 +47,38 @@ public class main {
         newTutor.setName(reader.nextLine());
         System.out.println("Id Casa (1-5):");
         newTutor.setHouseId(reader.nextInt());
-        
+        newTutor.sendToCreate();
     }
     
     public void printTutorsList(){
-        
+        Iterator<TutorDTO> AllTutors = TutorDAO.get().readAll().iterator();
+        System.out.println("Tutores");
+        System.out.println("{ id, nombre , telefono , puesto, id casa }");
+        while(AllTutors.hasNext()){
+           TutorLogic current = new TutorLogic(AllTutors.next());
+           System.out.print(current.toString());
+        }
     }
     
     public void updateTutorForm(){
-        
+        System.out.println("Id:");
+        TutorLogic tutor = new TutorLogic(reader.nextInt());
+        System.out.println("Nombre:"+tutor.getName());
+        tutor.setName(reader.nextLine());
+        System.out.println("Telefono:"+tutor.getPhone());
+        tutor.setPhone(reader.nextLine());
+        System.out.println("Director(S/N):"+tutor.getIsDirector());
+        tutor.catchDirectorAsign(reader.nextLine());
+        System.out.println("Id Casa (1-5):"+tutor.getHouseId());
+        tutor.setHouseId(reader.nextInt());
+        tutor.sendToUpdate();
     }
     
     public void deleteTutorForm(){
-        
+        System.out.println("Id:");
+        TutorLogic tutor = new TutorLogic(reader.nextInt());
+        System.out.print(tutor.toString());
+        System.out.println("Confirmar eliminacion (S/N):");
+        tutor.sendToDelete(reader.nextLine());
     }
 }

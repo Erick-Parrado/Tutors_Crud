@@ -41,6 +41,7 @@ public class TutorDTO {
     public boolean isDirector() {
         return isDirector;
     }
+   
 
     public int getHouseId() {
         return houseId;
@@ -65,4 +66,5 @@ public class TutorDTO {
     public void setHouseId(int houseId) {
         this.houseId = houseId;
     }
+    
 }
