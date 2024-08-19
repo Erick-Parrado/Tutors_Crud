@@ -15,7 +15,7 @@ public class DBConnection {
     private Connection con;
     private static DBConnection instance;
     
-    private DBConnection(){
+    public DBConnection(){
         this.user = "root";
         this.password = "";
         this.dataBase = "comarcas_xupi";
@@ -31,7 +31,7 @@ public class DBConnection {
             this.con = DriverManager.getConnection(this.strConnection,this.user,this.password);
             JOptionPane.showMessageDialog(null, "Conexion exitosa");
         }catch(Exception e){
-            System.out.print(e);
+            System.out.print(""+e.toString());
             JOptionPane.showMessageDialog(null, "Conexion inexitosa");   
         }
         
